@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "d04baae8-13f9-40ab-926c-e7045bf767e8",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "Arc90_40": {
+      "ver": "1.0.3",
+      "uuid": "4b9f5bec-c89d-435c-af49-45a42b7f9338",
+      "rawTextureUuid": "d04baae8-13f9-40ab-926c-e7045bf767e8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 41,
+      "height": 41,
+      "rawWidth": 41,
+      "rawHeight": 41,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
