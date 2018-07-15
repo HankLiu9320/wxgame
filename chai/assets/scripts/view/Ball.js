@@ -27,4 +27,17 @@ cc.Class({
                 break;
         }
     },
+
+    ballShoot(newX, newY) {
+        this.node.position = cc.v2(this.node.x, this.node.y);//初始化位置
+        var disX = newX - this.node.x;
+        var disY = newY - this.node.y;
+        var sqrtVal = Math.sqrt(disX * disX + disY * disY)
+        var vecBaseX = disX / sqrtVal;
+        var vecBaseY = disY / sqrtVal;
+        cc.log("sqrtVal:" + sqrtVal);
+        var speed = sqrtVal / 100 * 400;
+        this.getComponent(cc.RigidBody).linearVelocity = cc.v2(vecBaseX * speed, vecBaseY * speed);//初始化速度
+        cc.log(newX, newY);
+    }
 });

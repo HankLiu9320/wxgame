@@ -4,8 +4,6 @@ cc.Class({
 
     properties: {
         gameView: require('GameView'),
-        ball: require('Ball'),
-        paddle: require('Paddle'),
         brickLayout: require('BrickLayout'),
         overPanel: require('OverPanel'),
     },
@@ -35,10 +33,7 @@ cc.Class({
     init() {
         this.physicsManager.enabled = true;
         this.gameModel.init();
-
         this.gameView.init(this);
-        this.ball.init(this);
-        this.paddle.init();
         this.brickLayout.init(this.gameModel.bricksNumber);
         this.overPanel.init(this);
 
