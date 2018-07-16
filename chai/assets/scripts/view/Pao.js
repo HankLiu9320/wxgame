@@ -15,11 +15,11 @@ cc.Class({
         this.node.parent.on("touchmove", (event) => {
             this.changeRotation(event);
         });
-        
+
         this.node.parent.on("touchend", (event) => {
             let touchPoint = event.getLocation();
             let brickNode = cc.instantiate(this.ballPrefab);
-            brickNode.x = cc.winSize.width>>1;
+            brickNode.x = 0;
             brickNode.y = 20;
             var ballScript = brickNode.getComponent( 'Ball' );
             ballScript.ballShoot(touchPoint.x, touchPoint.y);
@@ -28,10 +28,10 @@ cc.Class({
     },
 
     start(){
-        this.node.x = cc.winSize.width>>1;
+        this.node.x = 0;
         this.node.y = 0;
     },
-    
+
     changeRotation(event){
         let touchPoint = this.node.parent.convertToNodeSpace(event.getLocation());
         let disX = touchPoint.x - this.node.x;

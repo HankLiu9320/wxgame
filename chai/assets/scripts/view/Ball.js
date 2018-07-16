@@ -2,7 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        
+
     },
 
     init(gameCtl) {
@@ -38,6 +38,23 @@ cc.Class({
         cc.log("sqrtVal:" + sqrtVal);
         var speed = sqrtVal / 100 * 400;
         this.getComponent(cc.RigidBody).linearVelocity = cc.v2(vecBaseX * speed, vecBaseY * speed);//初始化速度
-        cc.log(newX, newY);
+
+				this.schedule(function(dt){
+        		this.node.removeFromParent();
+        		var aabb = new cc.Rect();
+        		aabb.x = this.node.x;
+        		aabb.y = this.node.y;
+        		aabb.width = 1000;
+        		aabb.height = 1000;
+        		cc.log(aabb.x + "," + aabb.y);
+						var collider = cc.director.getPhysicsManager().testAABB(aabb);
+						cc.log("collider:" + collider.length);
+
+						if(collider.length > 0) {
+					  	for(var i = 0; i < collider.length; i++) {
+								collider[i].body.applyForceToCenter(cc.v2(-10010, -1000), true);
+					    }
+					  }
+		    }.bind(this), 3)
     }
 });

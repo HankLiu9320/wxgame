@@ -689,11 +689,11 @@
       "__id__": 17
     },
     "_enabled": true,
-    "tag": 2,
-    "_density": 1,
+    "tag": 3,
+    "_density": 0.1,
     "_sensor": false,
-    "_friction": 0.2,
-    "_restitution": 0,
+    "_friction": 0.5,
+    "_restitution": 0.1,
     "body": null,
     "_offset": {
       "__type__": "cc.Vec2",
@@ -748,7 +748,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 400,
+      "width": 300,
       "height": 24
     },
     "_rotationX": 0,
@@ -757,7 +757,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 389,
+      "x": 504,
       "y": 396
     },
     "_skewX": 0,
@@ -857,7 +857,7 @@
     "_top": 0,
     "_bottom": 0,
     "_verticalCenter": 0,
-    "_horizontalCenter": 29,
+    "_horizontalCenter": 144,
     "_isAbsLeft": true,
     "_isAbsRight": true,
     "_isAbsTop": true,
@@ -912,8 +912,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 357,
-      "y": 0
+      "x": 32,
+      "y": 4
     },
     "_skewX": 0,
     "_skewY": 0,
