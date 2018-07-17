@@ -19,8 +19,8 @@ cc.Class({
         this.node.parent.on("touchend", (event) => {
             let touchPoint = event.getLocation();
             let brickNode = cc.instantiate(this.ballPrefab);
-            brickNode.x = 0;
-            brickNode.y = 20;
+            brickNode.x = this.node.x;
+            brickNode.y = this.node.y;
             var ballScript = brickNode.getComponent( 'Ball' );
             ballScript.ballShoot(touchPoint.x, touchPoint.y);
             cc.director.getScene().addChild(brickNode);
@@ -28,8 +28,8 @@ cc.Class({
     },
 
     start(){
-        this.node.x = 0;
-        this.node.y = 0;
+        this.node.x = 70;
+        this.node.y = 70;
     },
 
     changeRotation(event){
