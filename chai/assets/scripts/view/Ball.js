@@ -42,11 +42,11 @@ cc.Class({
 				this.schedule(function(dt){
         		this.node.removeFromParent();
         		var aabb = new cc.Rect();
-        		aabb.x = this.node.x;
-        		aabb.y = this.node.y;
-        		aabb.width = 1000;
-        		aabb.height = 1000;
-        		cc.log(aabb.x + "," + aabb.y);
+        		aabb.center = cc.v2(this.node.x, this.node.y);
+        		aabb.width = 70;
+        		aabb.height = 70;
+
+        		cc.log("aabb:" + aabb.x + "," + aabb.y);
 						var collider = cc.director.getPhysicsManager().testAABB(aabb);
 						cc.log("collider:" + collider.length);
 

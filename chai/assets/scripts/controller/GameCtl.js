@@ -28,10 +28,17 @@ cc.Class({
     // cc.PhysicsManager.DrawBits.e_centerOfMassBit |
     // cc.PhysicsManager.DrawBits.e_jointBit |
     // cc.PhysicsManager.DrawBits.e_shapeBit
-    // ; 
+    // ;
 
     init() {
         this.physicsManager.enabled = true;
+
+        this.physicsManager.debugDrawFlags = cc.PhysicsManager.DrawBits.e_aabbBit |
+				    cc.PhysicsManager.DrawBits.e_pairBit |
+				    cc.PhysicsManager.DrawBits.e_centerOfMassBit |
+				    cc.PhysicsManager.DrawBits.e_jointBit |
+				    cc.PhysicsManager.DrawBits.e_shapeBit;
+
         this.gameModel.init();
         this.gameView.init(this);
         this.brickLayout.init(this.gameModel.bricksNumber);

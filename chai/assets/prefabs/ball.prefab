@@ -119,6 +119,15 @@
     "bullet": false
   },
   {
+    "__type__": "9b280YbFuZJv4QPGPL8e8iv",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true
+  },
+  {
     "__type__": "cc.PhysicsCircleCollider",
     "_name": "",
     "_objFlags": 0,
@@ -134,19 +143,10 @@
     "body": null,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 0.3,
       "y": 0
     },
-    "_radius": 16.3
-  },
-  {
-    "__type__": "9b280YbFuZJv4QPGPL8e8iv",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true
+    "_radius": 26
   },
   {
     "__type__": "cc.PrefabInfo",
