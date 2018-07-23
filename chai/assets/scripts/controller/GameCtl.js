@@ -31,8 +31,11 @@ cc.Class({
     // ;
 
     init() {
-        this.physicsManager.enabled = true;
+        var manager = cc.director.getCollisionManager();
+        manager.enabled = true;
+        manager.enabledDebugDraw = true;
 
+        this.physicsManager.enabled = true;
         this.physicsManager.debugDrawFlags = cc.PhysicsManager.DrawBits.e_aabbBit |
 				    cc.PhysicsManager.DrawBits.e_pairBit |
 				    cc.PhysicsManager.DrawBits.e_centerOfMassBit |

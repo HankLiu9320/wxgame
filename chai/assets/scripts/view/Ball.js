@@ -32,29 +32,52 @@ cc.Class({
         this.node.position = cc.v2(this.node.x, this.node.y);//初始化位置
         var disX = newX - this.node.x;
         var disY = newY - this.node.y;
-        var sqrtVal = Math.sqrt(disX * disX + disY * disY)
-        var vecBaseX = disX / sqrtVal;
-        var vecBaseY = disY / sqrtVal;
-        cc.log("sqrtVal:" + sqrtVal);
-        var speed = sqrtVal / 100 * 400;
-        this.getComponent(cc.RigidBody).linearVelocity = cc.v2(vecBaseX * speed, vecBaseY * speed);//初始化速度
+        var rs = this.calcUnitVec(disX, disY);
+        var speed = rs.sqrtVal / 100 * 400;
+        this.getComponent(cc.RigidBody).linearVelocity = cc.v2(rs.baseX * speed, rs.baseY * speed);//初始化速度
 
 				this.schedule(function(dt){
-        		this.node.removeFromParent();
-        		var aabb = new cc.Rect();
-        		aabb.center = cc.v2(this.node.x, this.node.y);
-        		aabb.width = 70;
-        		aabb.height = 70;
+						var rbody = this.getComponent(cc.RigidBody);
+		    		var aabb = new cc.Rect();
+		    		var ballCenter = rbody.getWorldCenter();
+		    		cc.log("ballCenter:" + ballCenter);
+		    		aabb.center = ballCenter;
+		    		aabb.width = this.node.width + 100;
+		    		aabb.height = this.node.height + 100;
 
-        		cc.log("aabb:" + aabb.x + "," + aabb.y);
+		    		cc.log("aabb:" + aabb.x + "," + aabb.y);
 						var collider = cc.director.getPhysicsManager().testAABB(aabb);
 						cc.log("collider:" + collider.length);
 
 						if(collider.length > 0) {
-					  	for(var i = 0; i < collider.length; i++) {
-								collider[i].body.applyForceToCenter(cc.v2(-10010, -1000), true);
-					    }
+								for(var i = 0; i < collider.length; i++) {
+				            var body = collider[i].body;
+				            var bodyCenter = body.getWorldCenter();
+				            var vecX = bodyCenter.x - ballCenter.x;
+				            var vecY = bodyCenter.y - ballCenter.y;
+				            cc.log(vecX + "++++" + vecY);
+				            var unitVec = this.calcUnitVec(vecX, vecY);
+				            cc.log(unitVec.baseX + "," + unitVec.baseY);
+				            var vecSpeedX = unitVec.baseX * 100000;
+				            var vecSppedY = unitVec.baseY * 100000;
+				            cc.log("force:" + vecSpeedX + "," + vecSppedY);
+
+				            body.applyForceToCenter(cc.v2(vecSpeedX, vecSppedY), true);
+								}
 					  }
+
+						this.node.removeFromParent();
 		    }.bind(this), 3)
+    },
+
+    calcUnitVec(x, y) {
+        var sqrtVal = Math.sqrt(x * x + y * y)
+        var vecBaseX = x / sqrtVal;
+        var vecBaseY = y / sqrtVal;
+        var rs = new Object();
+        rs.baseX = vecBaseX;
+        rs.baseY = vecBaseY;
+        rs.sqrtVal = sqrtVal;
+        return rs;
     }
 });
